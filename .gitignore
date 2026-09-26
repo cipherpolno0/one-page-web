@@ -1,0 +1,30 @@
+# Secrets and local credentials
+.env
+.env.*
+!.env.example
+.netrc
+.npmrc
+.aws
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies and build output
+node_modules/
+.next/
+next-app/prisma/*.db
+next-app/prisma/*.db-journal
+dist/
+build/
+*.zip
+*.tsbuildinfo
+
+# Logs and local editor or operating-system files
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.codex/
+.agents/

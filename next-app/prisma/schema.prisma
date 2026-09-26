@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String     @id @default(cuid())
+  email            String     @unique
+  displayName      String
+  passwordHash     String
+  role             String     @default("EDITOR")
+  status           String     @default("ACTIVE")
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  accounts         Account[]
+  sessions         Session[]
+  createdNews      News[]     @relation("NewsCreatedBy")
+  updatedNews      News[]     @relation("NewsUpdatedBy")
+  createdDocuments Document[] @relation("DocumentCreatedBy")
+  updatedDocuments Document[] @relation("DocumentUpdatedBy")
+
+  @@index([status, createdAt])
+  @@index([role, status])
+}
+
+model Account {
+  id                String   @id @default(cuid())
+  userId            String
+  provider          String
+  providerAccountId String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id               String   @id @default(cuid())
+  userId           String
+  sessionTokenHash String   @unique
+  expiresAt        DateTime
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+}
+
+model News {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  category    String
+  summary     String
+  content     String
+  status      String   @default("DRAFT")
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String
+  updatedById String
+  createdBy   User     @relation("NewsCreatedBy", fields: [createdById], references: [id])
+  updatedBy   User     @relation("NewsUpdatedBy", fields: [updatedById], references: [id])
+
+  @@index([status, publishedAt])
+  @@index([category, publishedAt])
+}
+
+model Document {
+  id            String   @id @default(cuid())
+  title         String
+  category      String
+  fileUrl       String?
+  fileType      String
+  fileSizeBytes Int?
+  status        String   @default("DRAFT")
+  publishedAt   DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  createdById   String
+  updatedById   String
+  createdBy     User     @relation("DocumentCreatedBy", fields: [createdById], references: [id])
+  updatedBy     User     @relation("DocumentUpdatedBy", fields: [updatedById], references: [id])
+
+  @@index([status, publishedAt])
+  @@index([category, publishedAt])
+}
