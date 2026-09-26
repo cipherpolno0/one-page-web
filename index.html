@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="เว็บไซต์ประชาสัมพันธ์สำหรับเผยแพร่ข่าวสาร เอกสาร และช่องทางติดต่อ"
+    >
+    <title>ศูนย์ประชาสัมพันธ์</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Skip link and site header -->
+    <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+
+    <header class="site-header" id="page-top">
+      <div class="container site-header__content">
+        <a class="site-brand" href="#page-top" aria-label="ศูนย์ประชาสัมพันธ์ หน้าแรก">
+          <span class="site-brand__mark" aria-hidden="true">ป</span>
+          <span>
+            <strong>ศูนย์ประชาสัมพันธ์</strong>
+            <small>ข่าวสารและบริการข้อมูล</small>
+          </span>
+        </a>
+
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-menu">
+          <span class="menu-icon" aria-hidden="true"></span>
+          <span class="menu-text">เมนู</span>
+        </button>
+
+        <nav class="primary-nav" id="primary-menu" aria-label="เมนูหลัก">
+          <ul>
+            <li><a href="#news">ข่าวประชาสัมพันธ์</a></li>
+            <li><a href="#downloads">ดาวน์โหลดเอกสาร</a></li>
+            <li><a href="#contact">ติดต่อเรา</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main page content -->
+    <main id="main-content">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="page-title">
+        <div class="container hero-content">
+          <p class="eyebrow">ข้อมูลที่ชัดเจน เข้าถึงได้ง่าย</p>
+          <h1 id="page-title">ติดตามข่าวสารสำคัญ<br>ได้ในที่เดียว</h1>
+          <p class="hero-description">
+            รวบรวมข่าวประชาสัมพันธ์ เอกสารที่เกี่ยวข้อง และช่องทางติดต่อสำหรับผู้รับบริการ<br>
+            <strong>เนื้อหาทั้งหมดในหน้านี้เป็นข้อมูลตัวอย่างสำหรับการออกแบบเว็บไซต์</strong>
+          </p>
+          <a class="button button-primary" href="#news">ดูข่าวล่าสุด</a>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section class="content-section" id="news" aria-labelledby="news-title">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">อัปเดตล่าสุด</p>
+              <h2 id="news-title">ข่าวประชาสัมพันธ์</h2>
+            </div>
+            <a class="section-heading__link" href="#contact">สอบถามข้อมูล <span aria-hidden="true">→</span></a>
+          </div>
+
+          <form class="news-controls" data-news-controls role="search">
+            <div>
+              <label for="news-search">ค้นหาข่าว</label>
+              <input id="news-search" type="search" placeholder="ค้นหาจากหัวข้อหรือสรุปข่าว" autocomplete="off" aria-describedby="news-search-help">
+              <small class="news-controls__hint" id="news-search-help">ค้นหาได้จากคำในหัวข้อหรือสรุปข่าว</small>
+            </div>
+            <div>
+              <label for="news-category">หมวดข่าว</label>
+              <select id="news-category">
+                <option value="">ทุกหมวด</option>
+              </select>
+            </div>
+          </form>
+
+          <p id="news-results-count" aria-live="polite"></p>
+          <p class="news-empty-state" id="news-empty-state" hidden>ไม่พบข่าวที่ตรงกับคำค้นหาหรือหมวดที่เลือก</p>
+          <div class="news-grid" id="news-list" data-news-list></div>
+        </div>
+      </section>
+
+      <!-- Downloads -->
+      <section class="content-section content-section--tinted" id="downloads" aria-labelledby="downloads-title">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">เอกสารพร้อมใช้</p>
+              <h2 id="downloads-title">ดาวน์โหลดเอกสาร</h2>
+            </div>
+            <p class="section-note">รายการเอกสาร PDF ด้านล่างเป็นข้อมูลตัวอย่าง ไม่มีไฟล์จริงแนบอยู่</p>
+          </div>
+
+          <div class="download-list" data-document-list></div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="content-section contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-layout">
+          <div>
+            <p class="eyebrow">ยินดีให้บริการ</p>
+            <h2 id="contact-title">ติดต่อเรา</h2>
+            <p class="contact-intro">ข้อมูลติดต่อด้านข้างเป็นข้อมูลจำลองสำหรับหน้าเว็บไซต์ตัวอย่าง หากต้องการสอบถามข้อมูลเพิ่มเติม กรุณาติดต่อผ่านช่องทางที่หน่วยงานกำหนดในวันและเวลาราชการ</p>
+          </div>
+          <address class="contact-details">
+            <div>
+              <span class="contact-details__label">โทรศัพท์ (ตัวอย่าง)</span>
+              <a href="tel:020000000">02-000-0000</a>
+            </div>
+            <div>
+              <span class="contact-details__label">อีเมล (ตัวอย่าง)</span>
+              <a href="mailto:contact@example.org">contact@example.org</a>
+            </div>
+            <div>
+              <span class="contact-details__label">เวลาทำการ</span>
+              <span>วันจันทร์–ศุกร์ 08.30–16.30 น.</span>
+            </div>
+            <div>
+              <span class="contact-details__label">ศูนย์บริการ</span>
+              <span>ศูนย์บริการข้อมูลตัวอย่าง</span>
+            </div>
+          </address>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="current-year">2569</span> ศูนย์ประชาสัมพันธ์</p>
+        <a href="#page-top">กลับสู่ด้านบน <span aria-hidden="true">↑</span></a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
